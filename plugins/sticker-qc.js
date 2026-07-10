@@ -2,31 +2,31 @@ import { sticker } from '../lib/sticker.js'
 import axios from 'axios'
 
 const handler = async (m, { conn, args }) => {
-    let mentionedJid = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : null;
+    let mentionedJid = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : null;
     let authorName, text, pp;
 
-    if (!args.length && !(m.quoted && m.quoted.text)) {
-        throw "✍️ *Ingrese un texto para realizar su stiker quotly.*\n\n> Ejemplo: .qc Hola mundo\n> Ejemplo: .qc @user nombre / Hola\n> Ejemplo: .qc nombre / Hola";
+    if (!args.length &&!(m.quoted && m.quoted.text)) {
+        throw "⚡ *RAYO PREM* ➔ Ingresa un texto para crear tu *quotly*.\n\n> Ejemplo:.qc Hola mundo\n> Ejemplo:.qc @user Nombre / Hola\n> Ejemplo:.qc Nombre / Hola";
     }
 
-    // 🔹 Caso extendido: .qc @user NombreAutor / Texto
+    // 🔹 Caso extendido:.qc @user NombreAutor / Texto
     if (mentionedJid && args.join(" ").includes("/")) {
         const joined = args.slice(1).join(" ");
-        const [authorNameRaw, ...textParts] = joined.split("/");
+        const [authorNameRaw,...textParts] = joined.split("/");
         authorName = authorNameRaw?.trim() || "Anónimo";
         text = textParts.join("/").trim();
-        pp = await conn.profilePictureUrl(mentionedJid, 'image').catch(_ => 'https://telegra.ph/file/320b066dc81928b782c7b.png');
+        pp = await conn.profilePictureUrl(mentionedJid, 'image').catch(_ => 'https://files.catbox.moe/6w3x2p.jpg');
     }
-    // 🔹 Caso nuevo: .qc NombreAutor / Texto → usa foto fija
+    // 🔹 Caso nuevo:.qc NombreAutor / Texto → usa foto fija
     else if (!mentionedJid && args.join(" ").includes("/")) {
         const joined = args.join(" ");
-        const [authorNameRaw, ...textParts] = joined.split("/");
+        const [authorNameRaw,...textParts] = joined.split("/");
         authorName = authorNameRaw?.trim() || "Anónimo";
         text = textParts.join("/").trim();
-        // 📌 Foto fija para este caso
-        pp = "https://files.catbox.moe/dpeqsr.jpg";
+        // 📌 Foto fija Rayo Prem
+        pp = "https://files.evogb.win/91Vvmc.jpg";
     }
-    // 🔹 Caso simple: .qc <texto>
+    // 🔹 Caso simple:.qc <texto>
     else if (!mentionedJid && args.length >= 1) {
         text = args.join(" ");
         try {
@@ -34,7 +34,7 @@ const handler = async (m, { conn, args }) => {
         } catch {
             authorName = "Anónimo";
         }
-        pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/320b066dc81928b782c7b.png');
+        pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://files.evogb.win/91Vvmc.jpg');
     }
     // 🔹 Caso citado
     else if (m.quoted && m.quoted.text) {
@@ -44,14 +44,14 @@ const handler = async (m, { conn, args }) => {
         } catch {
             authorName = "Anónimo";
         }
-        pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/320b066dc81928b782c7b.png');
+        pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://files.evogb.win/91Vvmc.jpg');
     }
     else {
-        return conn.reply(m.chat, "🐼 *Formato inválido.*\n\n> Usa: .qc Hola mundo\n> Usa: .qc @user NombreAutor / Texto\n> Usa: .qc NombreAutor / Texto", m);
+        return conn.reply(m.chat, "⚡ *RAYO PREM* ➔ Formato inválido.\n\n> Usa:.qc Hola mundo\n> Usa:.qc @user Nombre / Texto\n> Usa:.qc Nombre / Texto", m);
     }
 
-    if (!text) return conn.reply(m.chat, '🐼 *Ingrese un texto para el sticker.*', m)
-    if (text.length > 30) return conn.reply(m.chat, '> Máximo 30 carácteres, no es una biblia hijo.', m)
+    if (!text) return conn.reply(m.chat, '⚡ *RAYO PREM* ➔ Ingresa un texto para el sticker.', m)
+    if (text.length > 30) return conn.reply(m.chat, '⚡ *RAYO PREM* ➔ Máximo 30 caracteres. El trueno es breve.', m)
 
     const obj = {
         "type": "quote",
@@ -73,7 +73,7 @@ const handler = async (m, { conn, args }) => {
         }]
     };
 
-    await conn.sendMessage(m.chat, { react: { text: "⏳", key: m.key } })
+    await conn.sendMessage(m.chat, { react: { text: "⚡", key: m.key } })
 
     try {
         const json = await axios.post('https://btzqc.betabotz.eu.org/generate', obj, {
@@ -81,17 +81,17 @@ const handler = async (m, { conn, args }) => {
         });
 
         const buffer = Buffer.from(json.data.result.image, 'base64');
-        const stiker = await sticker(buffer, false, global.stickpack, global.stickauth);
+        const stiker = await sticker(buffer, false, 'Team Nightwish', 'Whois Yallico'); // Cambiado marca
 
         if (stiker) {
-            await conn.sendFile(m.chat, stiker, 'Quotely.webp', '', m);
-            await conn.sendMessage(m.chat, { react: { text: "✅", key: m.key } })
+            await conn.sendFile(m.chat, stiker, 'RayoPrem.webp', '⚡ *Rayo Prem* | Quotly', m); // Cambiado caption
+            await conn.sendMessage(m.chat, { react: { text: "🌙", key: m.key } })
         } else {
             await conn.sendMessage(m.chat, { react: { text: "❌", key: m.key } })
         }
     } catch (e) {
         console.error(e);
-        await conn.reply(m.chat, "❌ Error al generar el sticker. Intenta de nuevo más tarde.", m);
+        await conn.reply(m.chat, "⚡ *RAYO PREM ERROR* ➔ Falló al generar el sticker. Intenta de nuevo.", m);
         await conn.sendMessage(m.chat, { react: { text: "❌", key: m.key } })
     }
 }
