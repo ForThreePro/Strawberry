@@ -1,95 +1,140 @@
-import { WAMessageStubType } from '@whiskeysockets/baileys'
+import { WAMessageStubType } from '@whiskeysockets/baileys';
+import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
 
-const handler = async (m, { conn, args, isAdmin, isOwner }) => {
-  if (!isAdmin &&!isOwner) throw "⛈️ *RAYO PREM ERROR* ➔ *Solo los administradores pueden usar este comando.*"
-
-  let chat = global.db.data.chats[m.chat]
-  if (!chat) global.db.data.chats[m.chat] = {}
-
-  if (/on/i.test(args[0])) {
-    chat.bienvenida = true
-    await conn.reply(m.chat, "⛈️ *RAYO PREM BIENVENIDA* 🌙\n\n⚡ *Sistema de bienvenida ACTIVADO* en este grupo.", m)
-  } else if (/off/i.test(args[0])) {
-    chat.bienvenida = false
-    await conn.reply(m.chat, "⛈️ *RAYO PREM BIENVENIDA* 🌙\n\n❌ *Sistema de bienvenida DESACTIVADO*.", m)
-  } else {
-    await conn.reply(m.chat, "⛈️ *RAYO PREM BIENVENIDA* 🌙\n\n📌 *Uso:* *.bienvenida on* / *.bienvenida off*\n🌩️ *Team Nightwish*", m)
-  }
-}
-
-handler.help = ['bienvenida <on/off>']
-handler.tags = ['config']
-handler.command = /^(bienvenida|welcome|bye)$/i
-
-handler.before = async function (m, { conn, groupMetadata }) {
+export async function before(m, { conn }) {
   try {
-    if (!m.messageStubType ||!m.isGroup) return true
+    if (!m.messageStubType ||!m.isGroup) return true;
+    const chat = global.db?.data?.chats?.[m.chat];
+    if (!chat || chat.bienvenida === false) return true;
 
-    const chat = global.db?.data?.chats?.[m.chat]
-    if (!chat ||!chat.bienvenida) return true
+    const groupMetadata = await conn.groupMetadata(m.chat).catch(_ => null);
+    if (!groupMetadata) return true;
 
-    const userJid = m.messageStubParameters?.[0] || m.participant
-    if (!userJid) return true
+    let userJid = m.messageStubParameters?.[0];
+    if (!userJid) return true;
 
-    // NUEVO: Detectar foto del usuario. Si falla usa tu link
-    let img
+    // [FIX @lid -> @numero]
+    let userName = userJid.split('@')[0];
+    if (userJid.endsWith('@lid')) {
+      try {
+        let info = await conn.onWhatsApp(userJid);
+        userName = info[0]?.jid?.split('@')[0] || userName;
+      } catch(e){}
+    }
+    const user = `@${userName}`;
+
+    // [DATOS DEL GRUPO]
+    const groupName = groupMetadata.subject || 'Mi Grupo';
+    const groupDesc = groupMetadata.desc?.toString() || '📜 No hay descripción';
+    const groupMembers = groupMetadata.participants.length;
+
+    const fixedImageUrl = 'https://files.evogb.win/FXbFDD.jpg'; // [TU LOGO SOLO SI NO TIENE FOTO]
+
+    // [FIX] 1. INTENTA AGARRAR LA FOTO DEL USER PRIMERO
+    let imgBuffer = null;
     try {
-      img = await conn.profilePictureUrl(userJid, 'image')
-    } catch {
-      img = 'https://files.evogb.win/91Vvmc.jpg' // Fallback
+      let ppUrl = await conn.profilePictureUrl(userJid, 'image').catch(_ => null);
+      if (ppUrl) {
+        imgBuffer = await fetch(ppUrl).then(res => res.buffer()).catch(_ => null); // [SI TIENE FOTO = USA SU FOTO]
+      }
+    } catch(e){}
+
+    // [FIX] 2. SI NO TIENE FOTO O FALLÓ, USA TU LOGO
+    if (!imgBuffer) {
+      imgBuffer = await fetch(fixedImageUrl).then(res => res.buffer()).catch(_ => null); // [SI NO TIENE = TU LOGO]
     }
 
-    const userTag = `@${userJid.split('@')[0]}`
-    const groupName = groupMetadata.subject
-    const groupDesc = groupMetadata.desc || 'Disfruta tu estadía en el grupo.'
-    const membersCount = groupMetadata.participants.length
+    let text = '', audioFile = '';
 
-    let txt = ''
+    // [SWITCH PARA LOS 3 CASOS CON CUSTOM RAYO PREM]
+    if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
+      audioFile = './bienvenida.mp3';
+      text = chat.customWelcome
+   ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `
+⛈️ *¡ALERTA RAYO PREM!* ⚡🌩️
+╭───────────────────╮
+│ 🌩️ *NUEVO GUERRERO* 🌩️ │
+╰───────────────────╯
 
-    switch (m.messageStubType) {
-      case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-        txt = chat.customWelcome? chat.customWelcome.replace(/@user/gi, userTag).replace(/@group/gi, groupName).replace(/@desc/gi, groupDesc) :
-        `⛈️ *RAYO PREM - NUEVO MIEMBRO* 🌙\n\n` +
-        `⚡ *¡ALERTA DE INGRESO!*\n\n` +
-        `🌩️ Bienvenido ${userTag} a *${groupName}*\n\n` +
-        `📂 *REGISTRO:*\n` +
-        `│ 👤 *Miembro:* #${membersCount}\n` +
-        `│ 🛠️ *Creador:* Team Nightwish\n` +
-        `│ 📝 *Info:* ${groupDesc}\n\n` +
-        `> Portaos bien o el trueno los alcanza ⚡`;
-        break
+⚡ ${user} *HA INVOCADO EL TRUENO* ⚡
+💥 Acaba de entrar a la tormenta
 
-      case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-        txt = chat.customBye? chat.customBye.replace(/@user/gi, userTag).replace(/@group/gi, groupName) :
-        `⛈️ *RAYO PREM - DESPEDIDA* 🌙\n\n` +
-        `💨 ${userTag} abandonó *${groupName}*\n\n` +
-        `📉 *Quedamos:* ${membersCount} sobrevivientes\n` +
-        `> Que te vaya bien, pero vuelve ⚡`;
-        break
+🎮 *Grupo:* ${groupName}
+👥 *Ejército:* ${groupMembers} guerreros
+📜 *Decreto:* ${groupDesc}
 
-      case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-        txt = chat.customKick? chat.customKick.replace(/@user/gi, userTag).replace(/@group/gi, groupName) :
-        `⛈️ *RAYO PREM - EXPULSIÓN* 🌙\n\n` +
-        `⚡ *SISTEMA: ACCESO DENEGADO*\n\n` +
-        `${userTag} fue eliminado de *${groupName}*\n\n` +
-        `🚮 *Causa:* Rompió las reglas\n` +
-        `👥 *Población actual:* ${membersCount}\n` +
-        `> El trueno no perdona ⚡`;
-        break
+> "Bienvenido... o prepárate" ⚡
+`.trim();
+
+    } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
+      audioFile = './despedida.mp3';
+      text = chat.customBye
+   ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `
+⛈️ *¡BAJA CONFIRMADA!* ⚡💨
+╭───────────────────╮
+│ 🌫️ *SE LO LLEVÓ EL VIENTO* 🌫️ │
+╰───────────────────╯
+
+💨 ${user} *FUE CONSUMIDO POR LA TORMENTA* 💨
+😔 Abandonó el campo de batalla
+
+🎮 *Grupo:* ${groupName}
+👥 *Quedan:* ${groupMembers} guerreros
+📜 *Motivo:* Se retiró por su cuenta
+
+> "Que los vientos lo acompañen" ⚡
+`.trim();
+
+    } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
+      audioFile = './kick.mp3';
+      text = chat.customKick
+   ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `
+⛈️ *¡EXPULSIÓN EJECUTADA!* ⚡🚮
+╭───────────────────╮
+│ 🔥 *ACCESO DENEGADO* 🔥 │
+╰───────────────────╯
+
+🚫 ${user} *HA SIDO ELIMINADO POR EL RAYO* 🚫
+💣 Juicio del trueno aplicado
+
+🎮 *Grupo:* ${groupName}
+👥 *Quedan:* ${groupMembers} guerreros
+📜 *Motivo:* Incumplió las leyes del trueno
+
+> "El rayo no perdona" ⚡
+`.trim();
+    } else return true;
+
+    // 1. MENSAJE 1: IMAGEN + TEXTO PRO
+    if(imgBuffer){
+      await conn.sendMessage(m.chat, { image: imgBuffer, caption: text, mentions: [userJid] });
+    } else {
+      await conn.sendMessage(m.chat, { text: text, mentions: [userJid] });
     }
 
-    if (txt) {
+    // 2. MENSAJE 2: AUDIO CON BARRA
+    const audioPath = path.resolve(audioFile);
+    if (fs.existsSync(audioPath)) {
+      await new Promise(r => setTimeout(r, 1500)); // Delay para que no se pegue
+      const audioBuffer = fs.readFileSync(audioPath);
       await conn.sendMessage(m.chat, {
-        image: { url: img },
-        caption: txt,
-        mentions: [userJid]
-      })
+        audio: audioBuffer,
+        mimetype: 'audio/mpeg',
+        ptt: false // [AUDIO CON BARRA + TRANSCRIBIR]
+      });
+      console.log(`[WELCOME] ✅ Enviado: ${audioFile}`);
+    } else {
+      console.log(`[WELCOME] ❌ No existe: ${audioPath}`);
     }
 
-  } catch (e) {
-    console.error("Error en Bienvenida RAYO:", e)
+  } catch (error) {
+    console.error('❌ Error en welcome:', error);
   }
-  return true
 }
 
-export default handler
+export const disabled = false;
