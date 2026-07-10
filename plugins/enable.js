@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   let bot = global.db.data.settings[conn.user.jid] || {}
   let type = command.toLowerCase()
 
-  if (!args[0]) return m.reply(`⛈️ *RAYO PREM CONFIG* 🌙\n\n⚡ *Configuración incorrecta.*\n📌 *Uso:* ${usedPrefix + command} on/off\n*Ejemplo:* ${usedPrefix + command} on`) // Cambiado
+  if (!args[0]) return m.reply(`⛈️ *RAYO PREM CONFIG* 🌙\n\n⚡ *Configuración incorrecta.*\n📌 *Uso:* ${usedPrefix + command} on/off\n*Ejemplo:* ${usedPrefix + command} on`)
 
   let fail = false
   switch (type) {
@@ -56,27 +56,30 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 
   if (fail) return
 
-  const pathImg = join(process.cwd(), 'storage', 'img', 'catalogo.png')
-  let catalogoImg
-  if (existsSync(pathImg)) {
-    catalogoImg = readFileSync(pathImg)
-  } else {
-    catalogoImg = { url: 'https://files.catbox.moe/t7uytz.png' }
-  }
+  // SOLO IMAGEN LOCAL rayo.jpg
+  const pathImg = join(process.cwd(), 'storage', 'img', 'rayo.jpg')
+  let rayoImg = existsSync(pathImg)? readFileSync(pathImg) : null
 
-  let estadoTexto = isEnable? 'Activado ⚡' : 'Desactivado 🌑' // Cambiado
-  let emoji = isEnable? '🌩️' : '⛈️' // Cambiado
+  let estadoTexto = isEnable? 'Activado ⚡' : 'Desactivado 🌑'
+  let emoji = isEnable? '🌩️' : '⛈️'
 
-  let statusTxt = `${emoji} *RAYO PREM CONFIG* 🌙\n\n` // Cambiado
+  let statusTxt = `${emoji} *RAYO PREM CONFIG* 🌙\n\n`
   statusTxt += `⚡ *Función:* ${type}\n`
   statusTxt += `📊 *Estado:* ${estadoTexto}\n\n`
-  statusTxt += `⛈️ *Team Nightwish*` // Cambiado
+  statusTxt += `⛈️ *Team Nightwish*`
 
-  await conn.sendMessage(m.chat, {
-    image: catalogoImg.byteLength? catalogoImg : { url: catalogoImg.url },
-    caption: statusTxt,
-    mentions: [m.sender]
-  }, { quoted: m })
+  if (rayoImg) {
+    await conn.sendMessage(m.chat, {
+      image: rayoImg,
+      caption: statusTxt,
+      mentions: [m.sender]
+    }, { quoted: m })
+  } else {
+    await conn.sendMessage(m.chat, {
+      text: statusTxt,
+      mentions: [m.sender]
+    }, { quoted: m })
+  }
 }
 
 handler.help = ['welcome', 'antilink', 'antibot', 'modoadmin', 'subbots', 'nsfw', 'audios', 'antiprivado'].map(v => v + ' on/off')
