@@ -6,12 +6,16 @@ let handler = async (m) => {
     const used = process.memoryUsage()
     let cpu = os.loadavg()[0].toFixed(2)
 
-    let info = `⛈️ *REPORTE RAYO PREM* 🌙\n\n` // Cambiado
-    info += `⚡ *Uptime:* ${muptime}\n`
-    info += `⚡ *RAM Usada:* ${(used.heapUsed / 1024 / 1024).toFixed(2)} MB\n`
-    info += `⚡ *Carga CPU:* ${cpu}%\n\n`
-    info += `🌙 *Desarrollado por:* Whois Yallico\n` // Cambiado
-    info += `⚡ *Team Nightwish*`
+    let info = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ 📊 *ESTADO DEL BOT*
+│
+│ ⏰ *Uptime:* ${muptime}
+│ 🧠 *RAM Usada:* ${(used.heapUsed / 1024 / 1024).toFixed(2)} MB
+│ ⚡ *Carga CPU:* ${cpu}%
+│
+│ 👑 *Desarrollado por:* Whois Yallico
+│ > *“Que el trueno nunca se apague”*
+╰─────────────────❒`
 
     m.reply(info)
 }
