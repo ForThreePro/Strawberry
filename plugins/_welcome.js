@@ -30,7 +30,7 @@ export async function before(m, { conn }) {
     const groupDesc = groupMetadata.desc?.toString() || '📜 Sin descripción';
     const groupMembers = groupMetadata.participants.length;
 
-    const fixedImageUrl = 'https://files.evogb.win/FXbFDD.jpg'; // [TU LOGO SOLO SI NO TIENE FOTO]
+    const fixedImageUrl = 'https://files.evogb.win/strawberry.jpg'; // [LOGO FRESA]
 
     // [FIX] 1. FOTO DEL USER PRIMERO
     let imgBuffer = null;
@@ -41,64 +41,61 @@ export async function before(m, { conn }) {
       }
     } catch(e){}
 
-    // [FIX] 2. SI NO TIENE FOTO = LOGO
+    // [FIX] 2. SI NO TIENE FOTO = LOGO FRESA
     if (!imgBuffer) {
       imgBuffer = await fetch(fixedImageUrl).then(res => res.buffer()).catch(_ => null);
     }
 
     let text = '', audioFile = '';
 
-    // [SWITCH DISEÑO TEAM NIGHTWISH]
+    // [SWITCH DISEÑO BOT STRAWBERRY]
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       audioFile = './bienvenida.mp3';
       text = chat.customWelcome
-  ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *NUEVO INTEGRANTE*
-│
-│ ⚡ *Bienvenido:* ${user}
-│ ⛈️ *Acaba de unirse a la tormenta*
-│
-│ 🎮 *Grupo:* ${groupName}
-│ 👥 *Miembros:* ${groupMembers}
-│ 📜 *Descripción:* ${groupDesc}
-│
-│ > *“Que el trueno te guíe en la noche”*
-╰─────────────────❒`.trim();
+ ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *NUEVA FRESITA*
+
+🍓 *Bienvenid@:* ${user}
+💖 *Acaba de llegar al grupo*
+
+🎮 *Grupo:* ${groupName}
+👥 *Miembros:* ${groupMembers}
+📜 *Descripción:* ${groupDesc}
+
+> *“Pasa y agarra una fresita”* 🍓`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
       audioFile = './despedida.mp3';
       text = chat.customBye
-  ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 💨 *SALIDA REGISTRADA*
-│
-│ 🌫️ *Se fue:* ${user}
-│ ⛈️ *Abandonó la tormenta*
-│
-│ 🎮 *Grupo:* ${groupName}
-│ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Salida voluntaria
-│
-│ > *“Que los vientos nocturnos lo acompañen”*
-╰─────────────────❒`.trim();
+ ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💨 *SE FUE UNA FRESITA*
+
+😔 *Salió:* ${user}
+💖 *Abandonó la canasta*
+
+🎮 *Grupo:* ${groupName}
+👥 *Quedan:* ${groupMembers}
+📜 *Motivo:* Salida voluntaria
+
+> *“Vuelve pronto por más fresas”* 🍓`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
       audioFile = './kick.mp3';
       text = chat.customKick
-  ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🚮 *EXPULSIÓN EJECUTADA*
-│
-│ 💣 *Eliminado:* ${user}
-│ ⚡ *Juicio del trueno aplicado*
-│
-│ 🎮 *Grupo:* ${groupName}
-│ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Violó las leyes del grupo
-│
-│ > *“El rayo no perdona la traición”*
-╰─────────────────❒`.trim();
+ ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+🚮 *EXPULSIÓN EJECUTADA*
+
+💣 *Eliminad@:* ${user}
+🍓 *Strawberry aplicó justicia*
+
+🎮 *Grupo:* ${groupName}
+👥 *Quedan:* ${groupMembers}
+📜 *Motivo:* Rompió las reglas
+
+> *“Strawberry no tolera podridos”* 🍓`.trim();
     } else return true;
 
     // 1. MENSAJE 1: IMAGEN + TEXTO PRO
