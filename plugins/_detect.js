@@ -17,116 +17,106 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
     switch (m.messageStubType) {
         case 21: // Cambiar nombre
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *REGISTRO DEL GRUPO*
-│
-│ 📢 *CAMBIO DE NOMBRE*
-│ 👤 *Usuario:* ${usuario}
-│ 📝 *Nuevo:* _${m.messageStubParameters[0]}_
-│ 🌩️ *Grupo:* ${group}
-│
-│ > *“El trueno ha renombrado”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💖 *REGISTRO DEL GRUPO*
+
+📢 *CAMBIO DE NOMBRE*
+👤 *Usuario:* ${usuario}
+📝 *Nuevo:* _${m.messageStubParameters[0]}_
+🍓 *Grupo:* ${group}
+
+> *“Strawberry renombró la canasta”* 🍓`; break
 
         case 22: // Cambiar foto
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *REGISTRO DEL GRUPO*
-│
-│ 📸 *CAMBIO DE FOTO*
-│ 👤 *Usuario:* ${usuario}
-│ 🖼️ *Nueva imagen establecida*
-│ 🌩️ *Grupo:* ${group}
-│
-│ > *“Que brille bajo la noche”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💖 *REGISTRO DEL GRUPO*
+
+📸 *CAMBIO DE FOTO*
+👤 *Usuario:* ${usuario}
+🖼️ *Nueva imagen establecida*
+🍓 *Grupo:* ${group}
+
+> *“Ahora se ve más fresita”* 🍓`; break
 
         case 23: // Cambiar link
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ALERTA DE SEGURIDAD*
-│
-│ 🔗 *LINK RESETEADO*
-│ 👤 *Usuario:* ${usuario}
-│ 🌩️ *Grupo:* ${group}
-│
-│ > *“El portal ha sido alterado”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+🍓 *ALERTA DE SEGURIDAD*
+
+🔗 *LINK RESETEADO*
+👤 *Usuario:* ${usuario}
+🍓 *Grupo:* ${group}
+
+> *“El link de fresita cambió”* 🍓`; break
 
         case 25: // Cambiar ajustes
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🛡️ *AJUSTES MODIFICADOS*
-│
-│ 👤 *Usuario:* ${usuario}
-│ ⚙️ *Permisos:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
-│ 📊 *Edición de info de grupo*
-│
-│ > *“El control cambió de manos”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+🛡️ *AJUSTES MODIFICADOS*
+
+👤 *Usuario:* ${usuario}
+⚙️ *Permisos:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
+📊 *Edición de info de grupo*
+
+> *“Strawberry ajustó las fresas”* 🍓`; break
 
         case 26: // Abrir/Cerrar
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *ESTADO DEL CHAT*
-│
-│ 👤 *Usuario:* ${usuario}
-│ 🗣️ *Modo:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
-│ 📢 *Grupo:* ${m.messageStubParameters[0] == 'on'? 'CERRADO' : 'ABIERTO'}
-│
-│ > *“Que se escuche el trueno”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💖 *ESTADO DEL CHAT*
+
+👤 *Usuario:* ${usuario}
+🗣️ *Modo:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
+📢 *Grupo:* ${m.messageStubParameters[0] == 'on'? 'CERRADO' : 'ABIERTO'}
+
+> *“Solo fresitas pueden hablar”* 🍓`; break
 
         case 29: // Dar admin
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 👑 *ASCENSO DIVINO*
-│
-│ ⚡ *Nuevo Admin:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Otorgado por:* ${usuario}
-│ 🌙 *Rango:* Administrador
-│
-│ > *“Que gobierne con poder”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+👑 *NUEVO ADMIN*
+
+💖 *Ascendido:* @${m.messageStubParameters[0].split('@')[0]}
+👤 *Por:* ${usuario}
+🍓 *Rango:* Administrador
+
+> *“Que cuide la canasta de fresas”* 🍓`; break
 
         case 30: // Quitar admin
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📉 *DESTITUCIÓN*
-│
-│ 💥 *Admin caído:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Ejecutado por:* ${usuario}
-│ 🗑️ *Rango removido*
-│
-│ > *“El rayo no perdona”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+📉 *ADMIN REMOVIDO*
+
+💥 *Caído:* @${m.messageStubParameters[0].split('@')[0]}
+👤 *Por:* ${usuario}
+🗑️ *Rango removido*
+
+> *“Strawberry quitó la corona”* 🍓`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌩️ *NUEVO INTEGRANTE*
-│
-│ 🔥 *Bienvenido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 🌙 *Grupo:* ${group}
-│ ⚡ *Estado:* Ingreso registrado
-│
-│ > *“Prepárate para la tormenta”* ⛈️
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💖 *NUEVA FRESITA*
+
+🔥 *Bienvenid@:* @${m.messageStubParameters[0].split('@')[0]}
+🍓 *Grupo:* ${group}
+✅ *Estado:* Ingreso registrado
+
+> *“Pasa y agarra una fresita”* 🍓`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 💨 *SALIDA REGISTRADA*
-│
-│ 😔 *Se fue:* @${m.messageStubParameters[0].split('@')[0]}
-│ 🌙 *Grupo:* ${group}
-│ 🌫️ *Estado:* Abandonó el grupo
-│
-│ > *“Que los vientos lo guíen”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💨 *SE FUE UNA FRESITA*
+
+😔 *Salió:* @${m.messageStubParameters[0].split('@')[0]}
+🍓 *Grupo:* ${group}
+🌫️ *Estado:* Abandonó el grupo
+
+> *“Vuelve pronto con más fresas”* 🍓`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🚮 *EXPULSIÓN EJECUTADA*
-│
-│ 💣 *Eliminado:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Por orden de:* ${usuario}
-│ ⛈️ *Causa:* Violación de reglas
-│
-│ > *“El trueno ha juzgado”* ⚡
-╰─────────────────❒`; break
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+🚮 *EXPULSIÓN EJECUTADA*
+
+💣 *Eliminado:* @${m.messageStubParameters[0].split('@')[0]}
+👤 *Por:* ${usuario}
+🍓 *Causa:* Rompió las reglas
+
+> *“Strawberry no tolera podridos”* 🍓`; break
     }
 
     if (txt) {
