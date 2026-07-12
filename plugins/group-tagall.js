@@ -5,7 +5,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return;
     }
 
-    const customMessage = args.join(' ') || '⛈️ Invocación del Trueno';
+    const customMessage = args.join(' ') || '🍓 Canasta de fresas reunida';
     const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'Grupo', participants: [] }));
     const groupName = groupMetadata.subject;
 
@@ -52,15 +52,15 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
-    // Texto con estética Team Nightwish
-    let messageText = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📢 *INVOCACIÓN GENERAL*
-│
-│ 🌐 *Grupo:* ${groupName}
-│ ⚡ *Integrantes:* ${participants.length}
-│ 🌙 *Mensaje:* ${customMessage}
-│
-├─❒ *INTEGRANTES POR PAÍS* ❒
+    // Texto con estética Bot Strawberry
+    let messageText = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *INVOCACIÓN GENERAL*
+
+🍓 *Grupo:* ${groupName}
+💖 *Integrantes:* ${participants.length}
+🍓 *Mensaje:* ${customMessage}
+
+💖 *INTEGRANTES POR PAÍS*
 `;
 
     for (const flag of orderedFlags) {
@@ -68,22 +68,19 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
         for (const mem of grouped[flag]) {
           const realJid = mem.jid || mem.id || '';
           const displayNumber = realJid.split('@')[0];
-          messageText += `│ ${flag} @${displayNumber}\n`;
+          messageText += `🍓 ${flag} @${displayNumber}\n`;
         }
       }
     }
 
-    messageText += `╰─────────────────❒
-│
-│ > *“Que el trueno los reúna”*
-╰─────────────────❒`;
+    messageText += `\n> *“Que las fresas los reúnan”* 🍓`;
 
-    // NUEVO: Detectar foto del grupo
+    // Foto del grupo
     let img
     try {
-      img = await conn.profilePictureUrl(m.chat, 'image') // Foto del grupo
+      img = await conn.profilePictureUrl(m.chat, 'image')
     } catch {
-      img = 'https://files.evogb.win/jgBvm8.jpg' // Fallback trueno
+      img = 'https://files.evogb.win/S0aaJa.jpg' // Fallback fresa
     }
 
     await conn.sendMessage(m.chat, {
@@ -93,12 +90,11 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     }, { quoted: m });
 
   } catch (error) {
-    console.error("[ERROR EN NIGHTWISH]:", error);
-    conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ERROR*
-│
-│ ⚡ *Ocurrió un error al ejecutar el comando*
-╰─────────────────❒`, m);
+    console.error("[ERROR EN STRAWBERRY]:", error);
+    conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+❌ *ERROR*
+
+🍓 *Ocurrió un error al ejecutar el comando*`, m);
   }
 };
 
