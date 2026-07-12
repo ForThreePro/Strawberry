@@ -1,43 +1,39 @@
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
     // Validación de permisos para el comando
-    if (!isAdmin &&!isOwner) throw `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🛡️ *ACCESO DENEGADO*
-│ Solo *ADMINS* pueden usar esto
-╰─────────────────❒`
+    if (!isAdmin &&!isOwner) throw `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *ACCESO DENEGADO*
+Solo *ADMINS* pueden usar esto 🍓`
 
     let chat = global.db.data.chats[m.chat]
     if (!chat) global.db.data.chats[m.chat] = {}
 
     if (/on/i.test(args[0])) {
         chat.modoadmin = true
-        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⚡ *MODO ADMIN ACTIVADO*
-│
-│ 🌙 *Estado:* ENCENDIDO
-│ 🛡️ *Restricción:* Solo Admins
-│ ⛈️ *Los comandos están bloqueados*
-│
-│ > *“El trueno vigila el grupo”*
-╰─────────────────❒`, m)
+        await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+✅ *MODO ADMIN ACTIVADO*
+
+💖 *Estado:* ENCENDIDO
+🛡️ *Restricción:* Solo Admins
+🍓 *Los comandos están bloqueados*
+
+> *“Solo fresitas con corona pueden usarme”* 🍓`, m)
     } else if (/off/i.test(args[0])) {
         chat.modoadmin = false
-        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ❌ *MODO ADMIN DESACTIVADO*
-│
-│ 🌙 *Estado:* APAGADO
-│ ✅ *Todos pueden usar el bot*
-│ 🌩️ *Chat libre nuevamente*
-╰─────────────────❒`, m)
+        await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+❌ *MODO ADMIN DESACTIVADO*
+
+💖 *Estado:* APAGADO
+✅ *Todos pueden usar el bot*
+🍓 *Canasta abierta para todos*`, m)
     } else {
-        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌩️ *PANEL MODO ADMIN*
-│
-│ 📌 *Uso:*.modoadmin on /.modoadmin off
-│ ⚡ *Función:* Restringe comandos a admins
-│ 🛡️ *Protege:* Uso indebido del bot
-│
-│ 🌙 *Control total del grupo*
-╰─────────────────❒`, m)
+        await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+📊 *PANEL MODO ADMIN*
+
+💖 *Uso:*.modoadmin on /.modoadmin off
+🍓 *Función:* Restringe comandos a admins
+🛡️ *Protege:* Uso indebido del bot
+
+> *“Strawberry cuida el grupo”* 🍓`, m)
     }
 }
 
@@ -46,10 +42,10 @@ handler.tags = ['config']
 handler.command = /^(modoadmin|adminmode)$/i
 
 handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isPrems }) {
-    if (m.isBaileys || m.fromMe) return!0
+    if (m.isBaileys || m.fromMe) return true
 
     let chat = global.db.data.chats[m.chat]
-    if (!chat) return!0
+    if (!chat) return true
 
     // Si estamos en un grupo
     if (m.isGroup) {
@@ -57,22 +53,23 @@ handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isPrems 
         if (chat.modoadmin &&!isAdmin &&!isOwner &&!isROwner &&!isPrems) {
             // Si el usuario intenta usar un comando (empieza con prefijo), bloqueamos
             if (m.text.startsWith('.') || m.text.startsWith('/') || m.text.startsWith('#')) {
-                await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ACCESO BLOQUEADO*
-│
-│ ⚡ *Modo Admin:* ACTIVO
-│ ❌ *No tienes permiso*
-│ 🌙 *Solo admins pueden usar comandos*
-╰─────────────────❒`, m)
+                await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+🍓 *ACCESO BLOQUEADO*
+
+💖 *Modo Admin:* ACTIVO
+❌ *No tienes permiso*
+⚠️ *Solo admins pueden usar comandos*
+
+> *“Pídele fresitas al admin”* 🍓`, m)
                 return false // Detiene la ejecución de otros plugins
             }
         }
     } else {
         // Chats privados - todos pueden usar
-        return!0
+        return true
     }
 
-    return!0
+    return true
 }
 
 export default handler
