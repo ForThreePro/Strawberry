@@ -3,21 +3,19 @@ import { sticker } from '../lib/sticker.js'
 let handler = async (m, { conn, usedPrefix, command }) => {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ''
-    if (!/webp|image|video/g.test(mime)) return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🎭 *STICKER*
-│
-│ ⚠️ *Responde a una imagen, video o gif*
-│ 🌙 *Para convertirlo en sticker*
-╰─────────────────❒`)
-    
+    if (!/webp|image|video/g.test(mime)) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+🎭 *STICKER*
+
+⚠️ *Responde a una imagen, video o gif*
+🍓 *Para convertirlo en sticker*`)
+
     let img = await q.download()
-    let stiker = await sticker(img, false, 'Team Nightwish', 'Whois Yallico')
-    
-    await conn.sendFile(m.chat, stiker, 'sticker.webp', `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⚡ *STICKER CREADO*
-│
-│ > *El trueno en forma de sticker*
-╰─────────────────❒`, m)
+    let stiker = await sticker(img, false, 'Bot Strawberry 🍓', 'Whois Yallico 💖')
+
+    await conn.sendFile(m.chat, stiker, 'sticker.webp', `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *STICKER CREADO*
+
+> *La canasta de fresas en forma de sticker* 🍓`, m)
 }
 
 handler.help = ['s']
