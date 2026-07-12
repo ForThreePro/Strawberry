@@ -4,7 +4,7 @@ import { readFileSync } from 'fs'
 let handler = async (m, { conn, usedPrefix }) => {
   let taguser = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : m.sender
 
-  const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg'))
+  const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg')) // cambia tu imagen a fresa.jpg
 
   // Fecha y hora
   let fecha = new Date()
@@ -21,18 +21,18 @@ let handler = async (m, { conn, usedPrefix }) => {
   let m2 = Math.floor(uptime / 60000) % 60
   let s = Math.floor(uptime / 1000) % 60
 
-  let menuText = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│
-│ 👤 *Usuario:* @${taguser.split('@')[0]}
-│ ⚡ *Prefijo:* [ ${usedPrefix} ]
-│ ⏰ *Activo:* ${h}h ${m2}m ${s}s
-│
-├─❒ *FECHA Y HORA* ❒
-│ 📅 *Día:* ${dia}
-│ 📆 *Fecha:* ${fechaCompleta}
-│ 🕐 *Hora:* ${hora}
-│
-╰─────────────────❒\n\n`
+  let menuText = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+
+👤 *Usuario:* @${taguser.split('@')[0]}
+🍓 *Prefijo:* [ ${usedPrefix} ]
+⏰ *Activo:* ${h}h ${m2}m ${s}s
+
+💖 *FECHA Y HORA*
+📅 *Día:* ${dia}
+📆 *Fecha:* ${fechaCompleta}
+🕐 *Hora:* ${hora}
+
+`
 
   let help = Object.values(global.plugins).filter(p => p.help &&!p.disabled)
   let groups = {}
@@ -51,26 +51,25 @@ let handler = async (m, { conn, usedPrefix }) => {
     'group': '👥',
     'info': 'ℹ️',
     'fun': '🎭',
-    'main': '🌙',
+    'main': '🍓',
     'sin categoria': '📦'
   }
 
   for (let category in groups) {
-    let emoji = emojis[category] || '⚡'
-    menuText += `╭─❒ ${emoji} *${category.toUpperCase()}* ❒\n`
+    let emoji = emojis[category] || '🍓'
+    menuText += `🍓 *${category.toUpperCase()}* ${emoji}\n`
     for (let cmd of groups[category]) {
-      menuText += `│ ⚡ ${usedPrefix}${cmd}\n`
+      menuText += `💖 ${usedPrefix}${cmd}\n`
     }
-    menuText += `╰─────────────────❒\n\n`
+    menuText += `\n`
   }
 
-  menuText += `╭─❒ *INFO DEL BOT* ❒
-│ 🌙 *Bot:* Team Nightwish
-│ 👑 *Creador:* Whois Yallico
-│ ⛈️ *Versión:* 1.0.0
-│
-│ > *“Que el trueno obedezca tus órdenes”*
-╰─────────────────❒`
+  menuText += `🍓 *INFO DEL BOT*
+💖 *Bot:* Bot Strawberry
+🍓 *Creador:* Whois Yallico
+💖 *Versión:* 1.0.0
+
+> *“Que las fresas obedezcan tus órdenes”* 🍓`
 
   await conn.sendMessage(m.chat, {
     image: img,
