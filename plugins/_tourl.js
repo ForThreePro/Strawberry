@@ -5,12 +5,11 @@ import { fileTypeFromBuffer } from "file-type"
 let handler = async (m, { conn }) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
-  if (!mime) return conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📦 *ERROR*
-│
-│ 🌙 *Responde a un archivo válido*
-│ ⚡ *Formatos:* Imagen, Video, Audio, Doc
-╰─────────────────❒`, m)
+  if (!mime) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💖 *ERROR*
+
+🍓 *Responde a un archivo válido*
+🖼️ *Formatos:* Imagen, Video, Audio, Doc`, m)
 
   try {
     await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } })
@@ -20,28 +19,26 @@ let handler = async (m, { conn }) => {
 
     if (!link.success) throw new Error()
 
-    let txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ☁️ *ARCHIVO SUBIDO*
-│
-│ 🔗 *Enlace:* ${link.url}
-│ 🆔 *ID:* ${link.id}
-│ 📊 *Tamaño:* ${formatBytes(media.length)}
-│ ⚡ *Servidor:* evogb.win
-│
-│ > *“Almacenado en la nube nocturna”*
-╰─────────────────❒`
+    let txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+☁️ *ARCHIVO SUBIDO*
+
+🔗 *Enlace:* ${link.url}
+🆔 *ID:* ${link.id}
+📊 *Tamaño:* ${formatBytes(media.length)}
+💖 *Servidor:* evogb.win
+
+> *“Guardado en la canasta de fresas”* 🍓`
 
     await conn.sendFile(m.chat, media, 'file.' + link.url.split('.').pop(), txt, m)
     await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
   } catch (e) {
     console.error(e)
     await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ERROR*
-│
-│ ⚡ *No se pudo subir el archivo*
-│ 🌙 *Intenta de nuevo*
-╰─────────────────❒`, m)
+    await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *ERROR*
+
+🍓 *No se pudo subir el archivo*
+💖 *Intenta de nuevo*`, m)
   }
 }
 
