@@ -30,7 +30,7 @@ export async function before(m, { conn }) {
     const groupDesc = groupMetadata.desc?.toString() || '📜 Sin descripción';
     const groupMembers = groupMetadata.participants.length;
 
-    const fixedImageUrl = 'https://files.evogb.win/strawberry.jpg'; // [LOGO FRESA]
+    const fixedImageUrl = 'https://files.evogb.win/FXbFDD.jpg'; // [LOGO FRESA]
 
     // [FIX] 1. FOTO DEL USER PRIMERO
     let imgBuffer = null;
