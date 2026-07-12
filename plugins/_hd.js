@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 import FormData from "form-data"
 import crypto from "crypto"
 
-const MARCA = 'Team Nightwish 🌙' // <- TU MARCA
+const MARCA = 'Bot Strawberry 🍓' // <- TU MARCA
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     const key = Buffer.from('c2FzdWtl', 'base64').toString('utf-8')
@@ -11,16 +11,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let urlTarget = text? text.trim() : ''
 
     if (!urlTarget &&!/image\/(jpe?g|png)/.test(mime)) {
-        return conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⚡ *HD UPSCALER AI*
-│
-│ 🌙 *Uso correcto:*
-│ Responde a una imagen o envía
-│ un link con: *${usedPrefix + command}*
-│
-│ 🖼️ *Formatos:* JPG / PNG
-│ ⛈️ *Potenciado por IA*
-╰─────────────────❒`, m)
+        return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💖 *HD UPSCALER AI*
+
+🍓 *Uso correcto:*
+Responde a una imagen o envía
+un link con: *${usedPrefix + command}*
+
+🖼️ *Formatos:* JPG / PNG
+💖 *Potenciado por IA*`, m)
     }
 
     await m.react('⏳')
@@ -48,12 +47,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                 finalUrl = jsonUpload.url
             } else {
                 await m.react('❌')
-                return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ❌ *ERROR*
-│
-│ 🔴 *No se pudo subir la imagen*
-│ ⚡ *Motivo:* ${jsonUpload?.message || 'Sin respuesta'}
-╰─────────────────❒`)
+                return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+❌ *ERROR*
+
+🔴 *No se pudo subir la imagen*
+💖 *Motivo:* ${jsonUpload?.message || 'Sin respuesta'}`)
             }
         }
 
@@ -63,24 +61,22 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         if (contentType && contentType.includes("application/json")) {
             let jsonDl = await resDl.json()
             await m.react('❌')
-            return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ❌ *ERROR DE API*
-│
-│ ⚡ *${jsonDl.message || 'No se pudo mejorar la imagen.'}*
-╰─────────────────❒`)
+            return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+❌ *ERROR DE API*
+
+💖 *${jsonDl.message || 'No se pudo mejorar la imagen.'}*`)
         }
 
         let buffer = await resDl.buffer()
-        let info = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ✨ *IMAGEN MEJORADA*
-│
-│ 🌙 *Estado:* Procesado con IA
-│ ⚡ *Comando:* ${command.toUpperCase()}
-│ 👑 *Bot:* Team Nightwish
-│ 🔌 *API:* evogb.org
-│
-│ > *“La claridad del trueno nocturno”*
-╰─────────────────❒`
+        let info = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+✨ *IMAGEN MEJORADA*
+
+💖 *Estado:* Procesado con IA
+🍓 *Comando:* ${command.toUpperCase()}
+👑 *Bot:* Bot Strawberry
+🔌 *API:* evogb.org
+
+> *“La fresa más nítida del grupo”* 🍓`
 
         await conn.sendMessage(m.chat, { image: buffer, caption: info }, { quoted: m })
         await m.react('✅')
@@ -88,16 +84,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ERROR INTERNO*
-│
-│ ⚡ *Servidores saturados o error*
-│ 🌙 *Intenta de nuevo en unos seg*
-╰─────────────────❒`)
+        m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *ERROR INTERNO*
+
+🍓 *Servidores saturados o error*
+💖 *Intenta de nuevo en unos seg*`)
     }
 }
 
-handler.help = ['upscale', 'remini']
+handler.help = ['upscale', 'remini', 'hd', 'mejorar']
 handler.tags = ['tools']
 handler.command = /^(upscale|remini|hd|mejorar)$/i
 
