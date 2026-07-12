@@ -3,25 +3,24 @@ import fetch from "node-fetch"
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *CENTRAL DE DESCARGAS*
-│
-│ ⚡ *YouTube:*
-│ 🌙 *.play* nombre = Audio YT
-│ 🌙 *.play2* nombre = Video YT
-│ 🌙 *.ytmp3* link/nombre = Audio Directo
-│ 🌙 *.ytmp4* link/nombre = Video 720p Directo
-│
-│ ⚡ *Música y Social:*
-│ 🌙 *.spotify* nombre = Audio SP
-│ 🌙 *.tiktok* link = Video TT
-│ 🌙 *.tiktoksearch* texto = Buscar TT
-│ 🌙 *.ig* link = Instagram
-│ 🌙 *.fb* link = Facebook
-│ 🌙 *.mediafire* link = MediaFire
-│
-│ > *“Descarga el trueno nocturno”*
-╰─────────────────❒`, m)
+    if (!text) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *CENTRAL DE DESCARGAS*
+
+🍓 *YouTube:*
+💖 *.play* nombre = Audio YT
+💖 *.play2* nombre = Video YT
+💖 *.ytmp3* link/nombre = Audio Directo
+💖 *.ytmp4* link/nombre = Video 720p Directo
+
+🍓 *Música y Social:*
+💖 *.spotify* nombre = Audio SP
+💖 *.tiktok* link = Video TT
+💖 *.tiktoksearch* texto = Buscar TT
+💖 *.ig* link = Instagram
+💖 *.fb* link = Facebook
+💖 *.mediafire* link = MediaFire
+
+> *“Descarga la fresa más dulce”* 🍓`, m)
 
     await m.react('⏳')
     const keyEvo = Buffer.from('ZWt1c2Fz', 'base64').toString('utf-8').split('').reverse().join('')
@@ -39,23 +38,22 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
             let isVideo = command === 'play2'
             let apiUrl = isVideo
-              ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
+             ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
                 : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${keySasuke}`
 
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⚡ *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'}*
-│
-│ 📌 *Título:* ${vid.title}
-│ ⏳ *Duración:* ${vid.timestamp}
-│ 👤 *Autor:* ${vid.author.name}
-│ 👁️ *Vistas:* ${vid.views.toLocaleString()}
-│ 📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3 320kbps'}
-│
-│ > *“Extrayendo del trueno digital”*
-╰─────────────────❒`
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'}*
+
+📌 *Título:* ${vid.title}
+⏳ *Duración:* ${vid.timestamp}
+👤 *Autor:* ${vid.author.name}
+👁️ *Vistas:* ${vid.views.toLocaleString()}
+📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3 320kbps'}
+
+> *“Extrayendo fresita del horno digital”* 🍓`
 
             await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap }, { quoted: m })
             await conn.sendMessage(m.chat, {
@@ -76,22 +74,21 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
             let isVideo = command === 'ytmp4'
             let apiUrl = isVideo
-               ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
+              ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
                 : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${keySasuke}`
 
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⚡ *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'} DIRECTO*
-│
-│ 📌 *Título:* ${vid.title}
-│ 📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3'}
-│ ⏱️ *Duración:* ${vid.timestamp}
-│ 👁️ *Vistas:* ${vid.views.toLocaleString()}
-│
-│ > *“Descarga iniciada por el rayo”*
-╰─────────────────❒`
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'} DIRECTO*
+
+📌 *Título:* ${vid.title}
+📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3'}
+⏱️ *Duración:* ${vid.timestamp}
+👁️ *Vistas:* ${vid.views.toLocaleString()}
+
+> *“Descarga iniciada por Strawberry”* 🍓`
 
             await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap }, { quoted: m })
             await conn.sendMessage(m.chat, {
@@ -116,17 +113,16 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let dlData = await dlRes.json()
             if (!dlData.status) throw 'SP_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🎵 *SPOTIFY DOWNLOADER*
-│
-│ ⚡ *Título:* ${dlData.data.name}
-│ 👤 *Artista:* ${dlData.data.artist}
-│ 💿 *Álbum:* ${dlData.data.album}
-│ ⏳ *Duración:* ${dlData.data.duration}
-│ 📅 *Año:* ${dlData.data.year}
-│
-│ > *“Música extraída de la tormenta”*
-╰─────────────────❒`
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+🎵 *SPOTIFY DOWNLOADER*
+
+💖 *Título:* ${dlData.data.name}
+👤 *Artista:* ${dlData.data.artist}
+💿 *Álbum:* ${dlData.data.album}
+⏳ *Duración:* ${dlData.data.duration}
+📅 *Año:* ${dlData.data.year}
+
+> *“Música dulce extraída de la canasta”* 🍓`
 
             await conn.sendMessage(m.chat, { image: { url: dlData.data.image }, caption: cap }, { quoted: m })
             await conn.sendMessage(m.chat, { audio: { url: dlData.data.url }, mimetype: 'audio/mpeg', fileName: `${dlData.data.name}.mp3` }, { quoted: m })
@@ -140,30 +136,28 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
                 let video = res.data[0]
                 if (!video) throw 'TT_NOT_FOUND'
 
-                let caption = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *TIKTOK SEARCH*
-│
-│ ⚡ *Título:* ${video.title}
-│ 👤 *Autor:* ${video.author.nickname}
-│ 👁️ *Vistas:* ${video.play_count.toLocaleString()}
-│ ❤️ *Likes:* ${video.digg_count.toLocaleString()}
-│
-│ > *“Video encontrado en la tormenta”*
-╰─────────────────❒`
+                let caption = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+💖 *TIKTOK SEARCH*
+
+🍓 *Título:* ${video.title}
+👤 *Autor:* ${video.author.nickname}
+👁️ *Vistas:* ${video.play_count.toLocaleString()}
+❤️ *Likes:* ${video.digg_count.toLocaleString()}
+
+> *“Video fresa encontrado”* 🍓`
                 await conn.sendFile(m.chat, video.dl, 'tiktok.mp4', caption, m)
             } else {
                 let res = await (await fetch(`https://api.evogb.org/dl/tiktok?url=${text}&key=${keySasuke}`)).json()
                 let data = res.data
                 if (!data) throw 'TT_DL_ERROR'
 
-                let caption = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *TIKTOK DOWNLOADER*
-│
-│ ⚡ *Título:* ${data.title}
-│ 👤 *Autor:* ${data.author.nickname}
-│
-│ > *“Descargado por el rayo nocturno”*
-╰─────────────────❒`
+                let caption = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💖 *TIKTOK DOWNLOADER*
+
+🍓 *Título:* ${data.title}
+👤 *Autor:* ${data.author.nickname}
+
+> *“Descargado por Strawberry”* 🍓`
                 await conn.sendFile(m.chat, Array.isArray(data.dl)? data.dl[0] : data.dl, 'tiktok.mp4', caption, m)
             }
             return await m.react('✅')
@@ -176,14 +170,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let media = data.data[0]
             let type = media.type === 'video'? 'VIDEO' : 'IMAGEN'
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📸 *INSTAGRAM DOWNLOADER*
-│
-│ ⚡ *Tipo:* ${type}
-│ 🌙 *Estado:* Enviando contenido
-│
-│ > *“Capturado en la tormenta nocturna”*
-╰─────────────────❒`
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+📸 *INSTAGRAM DOWNLOADER*
+
+💖 *Tipo:* ${type}
+🍓 *Estado:* Enviando contenido
+
+> *“Capturado en la canasta de fresas”* 🍓`
 
             await conn.sendMessage(m.chat, {
                 [media.type === 'video'? 'video' : 'image']: { url: media.url },
@@ -199,14 +192,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!data.status) throw 'FB_ERROR'
             let video = data.resultados[0]
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📘 *FACEBOOK DOWNLOADER*
-│
-│ ⚡ *Calidad:* ${video.calidad || 'HD'}
-│ 🌙 *Estado:* Enviando video
-│
-│ > *“El video fue extraído por el rayo”*
-╰─────────────────❒`
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+📘 *FACEBOOK DOWNLOADER*
+
+💖 *Calidad:* ${video.calidad || 'HD'}
+🍓 *Estado:* Enviando video
+
+> *“El video fue extraído por Strawberry”* 🍓`
 
             await conn.sendMessage(m.chat, {
                 video: { url: video.url },
@@ -223,15 +215,14 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!result.status ||!result.data) throw 'MF_ERROR'
 
             let { name, size, date, dl } = result.data
-            let caption = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📦 *MEDIAFIRE DOWNLOADER*
-│
-│ 🏷 *Nombre:* ${name}
-│ ⚖ *Tamaño:* ${size}
-│ 📅 *Fecha:* ${date}
-│
-│ > *“Archivo extraído de la nube nocturna”*
-╰─────────────────❒`
+            let caption = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+📦 *MEDIAFIRE DOWNLOADER*
+
+🏷 *Nombre:* ${name}
+⚖ *Tamaño:* ${size}
+📅 *Fecha:* ${date}
+
+> *“Archivo guardado en la canasta”* 🍓`
 
             await conn.sendFile(m.chat, dl, name, caption, m)
             return await m.react('✅')
@@ -251,12 +242,11 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             FB_ERROR: 'Error al procesar el video de Facebook',
             MF_ERROR: 'No se pudo localizar el archivo de MediaFire'
         }
-        m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ERROR*
-│
-│ ⚡ *${msgs[e] || 'Error inesperado'}*
-│ 🌙 *Verifica el enlace/búsqueda*
-╰─────────────────❒`)
+        m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+💖 *ERROR*
+
+🍓 *${msgs[e] || 'Error inesperado'}*
+💖 *Verifica el enlace/búsqueda*`)
     }
 }
 
