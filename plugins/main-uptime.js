@@ -1,7 +1,7 @@
 let handler = async (m) => {
     let _uptime = process.uptime() * 1000
     let uptime = clockString(_uptime)
-    m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ⏰ *TIEMPO ACTIVO*
 
 💖 *Online:* ${uptime}
