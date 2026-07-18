@@ -53,7 +53,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
     // Texto con estética Bot Strawberry
-    let messageText = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    let messageText = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *INVOCACIÓN GENERAL*
 
 🍓 *Grupo:* ${groupName}
@@ -91,7 +91,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
   } catch (error) {
     console.error("[ERROR EN STRAWBERRY]:", error);
-    conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ❌ *ERROR*
 
 🍓 *Ocurrió un error al ejecutar el comando*`, m);
