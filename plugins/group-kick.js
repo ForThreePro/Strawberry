@@ -1,7 +1,7 @@
 let handler = async (m, { conn, participants, usedPrefix, command }) => {
     let mentionedJid = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : null
 
-    if (!mentionedJid) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    if (!mentionedJid) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *EXPULSAR USUARIO*
 
 🍓 *Menciona a un usuario o responde a un mensaje*`, m)
@@ -11,11 +11,11 @@ let handler = async (m, { conn, participants, usedPrefix, command }) => {
         let ownerGroup = groupMetadata.owner || m.chat.split`-`[0] + '@s.whatsapp.net'
         let ownerBot = global.owner[0][0] + '@s.whatsapp.net'
 
-        if (mentionedJid === conn.user.jid) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        if (mentionedJid === conn.user.jid) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ❌ *ERROR*
 
 🍓 *No puedo expulsarme a mi mismo*`, m)
-        if (mentionedJid === ownerGroup) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        if (mentionedJid === ownerGroup) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ❌ *ERROR*
 
 🍓 *No puedo expulsar al creador del grupo*`, m)
@@ -25,13 +25,13 @@ let handler = async (m, { conn, participants, usedPrefix, command }) => {
 🍓 *No puedo expulsar al dueño del bot*`, m)
 
         await conn.groupParticipantsUpdate(m.chat, [mentionedJid], 'remove')
-        conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 🚮 *USUARIO EXPULSADO*
 
 🍓 *@${mentionedJid.split('@')[0]} fue sacado del grupo*
 💖 *Juicio de la fresita ejecutado*`, m, { mentions: [mentionedJid] })
     } catch (e) {
-        conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ❌ *ERROR*
 
 🍓 *Ocurrió un problema*
