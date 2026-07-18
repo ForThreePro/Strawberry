@@ -19,7 +19,7 @@ Solo *ADMINS* pueden usar esto 🍓`
 > *“Solo fresitas con corona pueden usarme”* 🍓`, m)
     } else if (/off/i.test(args[0])) {
         chat.modoadmin = false
-        await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ❌ *MODO ADMIN DESACTIVADO*
 
 💖 *Estado:* APAGADO
