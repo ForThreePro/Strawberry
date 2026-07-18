@@ -53,7 +53,7 @@ export async function before(m, { conn }) {
       audioFile = './bienvenida.mp3';
       text = chat.customWelcome
  ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *NUEVA FRESITA*
 
 🍓 *Bienvenid@:* ${user}
@@ -69,7 +69,7 @@ export async function before(m, { conn }) {
       audioFile = './despedida.mp3';
       text = chat.customBye
  ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💨 *SE FUE UNA FRESITA*
 
 😔 *Salió:* ${user}
@@ -85,7 +85,7 @@ export async function before(m, { conn }) {
       audioFile = './kick.mp3';
       text = chat.customKick
  ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        : `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 🚮 *EXPULSIÓN EJECUTADA*
 
 💣 *Eliminad@:* ${user}
