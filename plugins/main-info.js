@@ -6,7 +6,7 @@ let handler = async (m) => {
     const used = process.memoryUsage()
     let cpu = os.loadavg()[0].toFixed(2)
 
-    let info = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    let info = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 📊 *ESTADO DEL BOT*
 
 ⏰ *Uptime:* ${muptime}
