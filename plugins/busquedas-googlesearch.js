@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    if (!text) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *GOOGLE SEARCH*
 
 🍓 *¿Qué deseas buscar?*
@@ -13,7 +13,7 @@ let handler = async (m, { conn, text }) => {
         let { data } = await axios.get(`https://api.delirius.store/search/google?query=${encodeURIComponent(text)}`)
         let results = data.data.slice(0, 5)
 
-        if (!results.length) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        if (!results.length) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ❌ *SIN RESULTADOS*
 
 💖 *No se encontró nada sobre:* ${text}`)
@@ -38,7 +38,7 @@ let handler = async (m, { conn, text }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *ERROR*
 
 🍓 *Falló la búsqueda*
