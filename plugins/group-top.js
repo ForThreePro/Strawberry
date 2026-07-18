@@ -4,7 +4,7 @@ import path from 'path'
 let user = a => '@' + a.split('@')[0]
 
 function handler(m, { groupMetadata, command, conn, text, usedPrefix}) {
-if (!text) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+if (!text) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *TOP 10*
 
 🍓 *Ejemplo:*.top gente mas activa`)
@@ -24,7 +24,7 @@ let k = Math.floor(Math.random() * 70);
 let x = `${pickRandom(['🍓','💖','👑','🌟','✨','🎀','🍰','😋','🔥','💥'])}`
 let vn = `https://hansxd.nasihosting.com/sound/sound${k}.mp3`
 
-let top = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+let top = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *TOP 10: ${text.toUpperCase()}*
 
 👑 *1.* ${user(a)}
