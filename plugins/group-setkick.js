@@ -1,6 +1,6 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ❌ *ACCESO DENEGADO*
 
 🍓 *Solo los admins o el dueño*
@@ -12,7 +12,7 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setkick') {
-        if (!text) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        if (!text) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 🚫 *CONFIGURAR KICK*
 
 🍓 *Falta el mensaje*
@@ -20,7 +20,7 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
 💡 *Ejemplo:*
 .setkick 🚫 @user fue baneado de la canasta de fresas 🍓`);
         chat.customKick = text.trim();
-        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ✅ *KICK GUARDADO*
 
 📝 *Vista previa:*
@@ -29,12 +29,12 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
 🗑️ *Para borrar:* .delkick`);
     }
     if (command === 'delkick') {
-        if (!chat.customKick) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        if (!chat.customKick) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ⚠️ *SIN KICK*
 
 🍓 *No tienes un kick personalizado*`);
         delete chat.customKick;
-        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ✅ *KICK ELIMINADO*
 
 🗑️ *Se borró el mensaje personalizado*`);
