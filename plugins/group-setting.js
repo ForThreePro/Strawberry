@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }[(args[0] || '')]
 
     if (isClose === undefined) {
-        await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓\n\n💖 *CONFIGURAR GRUPO*\n\n🍓 *Elige una opción:*\n*${usedPrefix + command}* abrir\n*${usedPrefix + command}* cerrar`, m)
+        await conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓\n\n💖 *CONFIGURAR GRUPO*\n\n🍓 *Elige una opción:*\n*${usedPrefix + command}* abrir\n*${usedPrefix + command}* cerrar`, m)
         return
     }
 
