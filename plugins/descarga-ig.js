@@ -3,7 +3,7 @@ import fetch from "node-fetch"
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    if (!text) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *CENTRAL DE DESCARGAS*
 
 🍓 *YouTube:*
@@ -44,7 +44,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'}*
 
 📌 *Título:* ${vid.title}
@@ -80,7 +80,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'} DIRECTO*
 
 📌 *Título:* ${vid.title}
@@ -113,7 +113,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let dlData = await dlRes.json()
             if (!dlData.status) throw 'SP_DL_ERROR'
 
-            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 🎵 *SPOTIFY DOWNLOADER*
 
 💖 *Título:* ${dlData.data.name}
@@ -136,7 +136,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
                 let video = res.data[0]
                 if (!video) throw 'TT_NOT_FOUND'
 
-                let caption = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+                let caption = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *TIKTOK SEARCH*
 
 🍓 *Título:* ${video.title}
@@ -170,7 +170,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let media = data.data[0]
             let type = media.type === 'video'? 'VIDEO' : 'IMAGEN'
 
-            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 📸 *INSTAGRAM DOWNLOADER*
 
 💖 *Tipo:* ${type}
@@ -192,7 +192,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!data.status) throw 'FB_ERROR'
             let video = data.resultados[0]
 
-            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            let cap = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 📘 *FACEBOOK DOWNLOADER*
 
 💖 *Calidad:* ${video.calidad || 'HD'}
@@ -215,7 +215,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!result.status ||!result.data) throw 'MF_ERROR'
 
             let { name, size, date, dl } = result.data
-            let caption = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            let caption = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 📦 *MEDIAFIRE DOWNLOADER*
 
 🏷 *Nombre:* ${name}
