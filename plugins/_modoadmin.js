@@ -1,6 +1,6 @@
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
     // Validación de permisos para el comando
-    if (!isAdmin &&!isOwner) throw `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    if (!isAdmin &&!isOwner) throw `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *ACCESO DENEGADO*
 Solo *ADMINS* pueden usar esto 🍓`
 
