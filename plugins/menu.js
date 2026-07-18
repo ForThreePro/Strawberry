@@ -21,7 +21,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   let m2 = Math.floor(uptime / 60000) % 60
   let s = Math.floor(uptime / 1000) % 60
 
-  let menuText = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+  let menuText = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 
 👤 *Usuario:* @${taguser.split('@')[0]}
 🍓 *Prefijo:* [ ${usedPrefix} ]
