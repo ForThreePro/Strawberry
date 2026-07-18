@@ -1,6 +1,6 @@
 const handler = async (m, { conn, command }) => {
   if (!m.mentionedJid[0] &&!m.quoted) {
-    let texto = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    let texto = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *CONTROL DE ADMIN*
 
 🍓 *Menciona o responde al usuario*
@@ -12,7 +12,7 @@ const handler = async (m, { conn, command }) => {
   let action = /^(promote|promover|daradmin)$/i.test(command)? 'promote' : 'demote'
 
   let msgAccion = action === 'promote'
-  ? `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+  ? `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *PROMOCIÓN*
 
 👑 *@${user.split('@')[0]} ahora es Administrador*
