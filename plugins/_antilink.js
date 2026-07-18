@@ -2,7 +2,7 @@ const linkRegex = /chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 const channelLinkRegex = /whatsapp\.com\/channel\/([0-9A-Za-z]{20,30})/i
 
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
-    if (!isAdmin &&!isOwner) throw `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+    if (!isAdmin &&!isOwner) throw `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *ACCESO DENEGADO*
 Solo *ADMINS* pueden usar esto 🍓`
 
