@@ -16,7 +16,7 @@ let handler = async (m, { conn, text }) => {
 
 💖 *No encontré la letra de:* ${text}`)
 
-        let txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        let txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 🎵 *LETRA ENCONTRADA*
 
 💖 *Título:* ${res.title}
