@@ -1,6 +1,6 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ❌ *ACCESO DENEGADO*
 
 🍓 *Solo los admins o el dueño*
@@ -12,7 +12,7 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setbye') {
-        if (!text) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        if (!text) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 💖 *CONFIGURAR DESPEDIDA*
 
 🍓 *Falta el mensaje*
@@ -20,7 +20,7 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
 💡 *Ejemplo:*
 .setbye 🍓 @user se fue a buscar fresas 💨`);
         chat.customBye = text.trim();
-        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ✅ *DESPEDIDA GUARDADA*
 
 📝 *Vista previa:*
@@ -29,12 +29,12 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
 🗑️ *Para borrar:* .delbye`);
     }
     if (command === 'delbye') {
-        if (!chat.customBye) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        if (!chat.customBye) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ⚠️ *SIN DESPEDIDA*
 
 🍓 *No tienes una despedida editada*`);
         delete chat.customBye;
-        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 ✅ *DESPEDIDA ELIMINADA*
 
 🗑️ *Se borró el mensaje personalizado*`);
