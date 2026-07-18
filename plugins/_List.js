@@ -31,7 +31,7 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
 
     // =====.v ===== DISEÑO BOT STRAWBERRY
     if(command === 'v'){
-        let msg = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+        let msg = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 📊 *SISTEMA DE SORTEOS*
 💖 *Bot:* Strawberry\n`
 
@@ -68,7 +68,7 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
         let [nombre, numero, premio] = texto.split('/').map(x => x.trim())
         numero = numero?.replace(/[^0-9]/g, '')
 
-        if(!nombre ||!numero ||!premio) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓\n💖 *FORMATO INCORRECTO*\n\n*Ejemplo:*\n.list Whois / 936994155 / Bot mensual\n🍓`, m)
+        if(!nombre ||!numero ||!premio) return conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓\n💖 *FORMATO INCORRECTO*\n\n*Ejemplo:*\n.list Whois / 936994155 / Bot mensual\n🍓`, m)
 
         for(let d of Object.keys(data[gid])){
             data[gid][d] = data[gid][d].filter(u => u.numero!== numero)
