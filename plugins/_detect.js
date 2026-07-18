@@ -69,7 +69,7 @@ handler.before = async function (m, { conn, groupMetadata }) {
 > *“Solo fresitas pueden hablar”* 🍓`; break
 
         case 29: // Dar admin
-            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 👑 *NUEVO ADMIN*
 
 💖 *Ascendido:* @${m.messageStubParameters[0].split('@')[0]}
@@ -79,7 +79,7 @@ handler.before = async function (m, { conn, groupMetadata }) {
 > *“Que cuide la canasta de fresas”* 🍓`; break
 
         case 30: // Quitar admin
-            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 📉 *ADMIN REMOVIDO*
 
 💥 *Caído:* @${m.messageStubParameters[0].split('@')[0]}
