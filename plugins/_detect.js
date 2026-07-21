@@ -17,7 +17,7 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
     switch (m.messageStubType) {
         case 21: // Cambiar nombre
-            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
 💖 *REGISTRO DEL GRUPO*
 
 📢 *CAMBIO DE NOMBRE*
@@ -28,7 +28,7 @@ handler.before = async function (m, { conn, groupMetadata }) {
 > *“Strawberry renombró la canasta”* 🍓`; break
 
         case 22: // Cambiar foto
-            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
 💖 *REGISTRO DEL GRUPO*
 
 📸 *CAMBIO DE FOTO*
@@ -39,7 +39,7 @@ handler.before = async function (m, { conn, groupMetadata }) {
 > *“Ahora se ve más fresita”* 🍓`; break
 
         case 23: // Cambiar link
-            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 』* 🍓
+            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
 🍓 *ALERTA DE SEGURIDAD*
 
 🔗 *LINK RESETEADO*
@@ -88,35 +88,10 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
 > *“Strawberry quitó la corona”* 🍓`; break
 
-        case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
-💖 *NUEVA FRESITA*
-
-🔥 *Bienvenid@:* @${m.messageStubParameters[0].split('@')[0]}
-🍓 *Grupo:* ${group}
-✅ *Estado:* Ingreso registrado
-
-> *“Pasa y agarra una fresita”* 🍓`; break
-
-        case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
-💨 *SE FUE UNA FRESITA*
-
-😔 *Salió:* @${m.messageStubParameters[0].split('@')[0]}
-🍓 *Grupo:* ${group}
-🌫️ *Estado:* Abandonó el grupo
-
-> *“Vuelve pronto con más fresas”* 🍓`; break
-
-        case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-            txt = `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
-🚮 *EXPULSIÓN EJECUTADA*
-
-💣 *Eliminado:* @${m.messageStubParameters[0].split('@')[0]}
-👤 *Por:* ${usuario}
-🍓 *Causa:* Rompió las reglas
-
-> *“Strawberry no tolera podridos”* 🍓`; break
+        // ELIMINADOS
+        // case WAMessageStubType.GROUP_PARTICIPANT_ADD: // Bienvenida
+        // case WAMessageStubType.GROUP_PARTICIPANT_LEAVE: // Despedida
+        // case WAMessageStubType.GROUP_PARTICIPANT_REMOVE: // Expulsión
     }
 
     if (txt) {
