@@ -2,35 +2,51 @@ let mutedUsers = new Set();
 
 let handler = async (m, { conn, command, participants }) => {
     let mentionedJid = m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : false;
-    if (!mentionedJid) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
-💖 *SISTEMA DE MUTE*
-
-🍓 *Etiqueta a una persona o responde a un mensaje*`);
+    if (!mentionedJid) return m.reply(`╭─🍓 *『 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 𝐁𝐎𝐓 』* 🍓
+│ 💗 *ERROR DE SISTEMA*
+│
+│ 🌸 *USO:* Responde a un mensaje
+│
+│ > *“Protocolo de muteo requiere objetivo”* 🍓
+╰─────────────────❒`);
 
     let isUserAdmin = participants.find(p => p.id === mentionedJid)?.admin;
-    if (isUserAdmin) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
-❌ *ERROR*
+    if (isUserAdmin) return m.reply(`╭─🍓 *『 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 𝐁𝐎𝐓 』* 🍓
+│ 🛡️ *ACCESO DENEGADO*
+│
+│ ⚠️ *No se puede mutear a un administrador*
+│
+│ > *“Rango superior detectado”* 💗
+╰─────────────────❒`);
 
-🍓 *No puedes mutear a un administrador*`);
-    if (mentionedJid === conn.user.jid) return m.reply(`🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
-❌ *ERROR*
-
-🍓 *No puedo mutearme a mi mismo*`);
+    if (mentionedJid === conn.user.jid) return m.reply(`╭─🍓 *『 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 𝐁𝐎𝐓 』* 🍓
+│ 🤖 *PROTOCOLO FALLIDO*
+│
+│ ⚠️ *No puedo realizar esta acción conmigo mismo*
+│
+│ > *“Autoeliminacion no permitida”* ❌
+╰─────────────────❒`);
 
     if (command === "mute") {
         mutedUsers.add(mentionedJid);
-        conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
-🔇 *USUARIO SILENCIADO*
-
-🍓 *@${mentionedJid.split('@')[0]}*
-💖 *Sus mensajes serán eliminados por Strawberry*`, m, { mentions: [mentionedJid] });
+        conn.reply(m.chat, `╭─🍓 *『 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 𝐁𝐎𝐓 』* 🍓
+│ 🔇 *USUARIO SILENCIADO*
+│
+│ 👤 *Objetivo:* @${mentionedJid.split('@')[0]}
+│ 📊 *Estado:* MUTE ACTIVADO
+│
+│ > *“Se eliminaran sus mensajes”* 🌸
+╰─────────────────❒`, m, { mentions: [mentionedJid] });
     } else if (command === "unmute") {
         mutedUsers.delete(mentionedJid);
-        conn.reply(m.chat, `🍓 *『 𝐁𝐎𝐓 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐑𝐘 』* 🍓
-🔊 *USUARIO DESMUTEADO*
-
-🍓 *@${mentionedJid.split('@')[0]}*
-💖 *Ya puede hablar de nuevo*`, m, { mentions: [mentionedJid] });
+        conn.reply(m.chat, `╭─🍓 *『 𝐒𝐓𝐑𝐀𝐖𝐁𝐄𝐑𝐘 𝐁𝐎𝐓 』* 🍓
+│ 🔊 *USUARIO LIBERADO*
+│
+│ 👤 *Objetivo:* @${mentionedJid.split('@')[0]}
+│ 📊 *Estado:* MUTE DESACTIVADO
+│
+│ > *“Puede volver a escribir”* 💗
+╰─────────────────❒`, m, { mentions: [mentionedJid] });
     }
 };
 
@@ -45,11 +61,11 @@ handler.before = async (m, { conn, isAdmin }) => {
     }
 };
 
-handler.help = ['mute', 'unmute'].map(v => v + ' @user');
+handler.help = ['mute ( Reacciona Al Mensaje )', 'unmute ( Reacciona Al Mensaje )'].map(v => v + ' @user');
 handler.tags = ['grupos'];
 handler.command = /^(mute|unmute)$/i;
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
 
-export default handler;
+export default handler
